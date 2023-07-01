@@ -56,7 +56,9 @@ def run_simulation(n) :
             return False, board, 0
     return True, board, board.num_protections()
 
-best_protections = 0
+f = open("output.txt", "r")
+best_protections = int(f.readlines()[0].strip())
+f.close()
 best_board = None
 while (True) :
     board = Board()
@@ -65,6 +67,6 @@ while (True) :
         best_protections = protections
         best_board = board
         f = open("output.txt", "w")
-        f.write(str(best_board))
+        f.write(str(protections) + "\n" + str(best_board))
         f.close()
         print("New best board found with " + str(best_protections) + " protections")

@@ -14,13 +14,15 @@ class Board:
             self.board.append([" "]*8)
 
     def board_str(self):
-        s = ""
-        for row in self.board:
-            for piece in row:
-                if (piece == " ") :
-                    s += "  "
-                s += str(piece) + " "
+        s = "  +---+---+---+---+---+---+---+---+\n"
+        for y in range(7, -1, -1):
+            s += str(y + 1) + " |"
+            for x in range(8):
+                piece = self.get_piece(x, y)
+                s += " {} |".format(str(piece) if piece != " " else " ")
             s += "\n"
+            s += "  +---+---+---+---+---+---+---+---+\n"
+        s += "    a   b   c   d   e   f   g   h\n"
         return s
 
     def add_piece(self, piece):
