@@ -53,12 +53,18 @@ def run_simulation(n) :
     generate_random_board(n)
     for piece in board.all_pieces :
         if (not (piece.is_protected() and piece.is_protecting())) :
-            return False, board
-    return True, board
+            return False, board, 0
+    return True, board, board.num_protections()
 
+best_protections = 0
+best_board = None
 while (True) :
     board = Board()
-    result, board = run_simulation(16)
-    if (result) :
-        print(board)
-        break
+    result, board, protections = run_simulation(16)
+    if (result and protections > best_protections) :
+        best_protections = protections
+        best_board = board
+        f = open("output.txt", "w")
+        f.write(str(best_board))
+        f.close()
+        print("New best board found with " + str(best_protections) + " protections")

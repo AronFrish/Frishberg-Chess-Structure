@@ -16,7 +16,11 @@ class Board:
     def board_str(self):
         s = ""
         for row in self.board:
-            s += (str(row) + "\n")
+            for piece in row:
+                if (piece == " ") :
+                    s += "  "
+                s += str(piece) + " "
+            s += "\n"
         return s
 
     def add_piece(self, piece):
@@ -53,3 +57,11 @@ class Board:
 
     def __str__(self):
         return self.board_str()
+    
+    def num_protections(self) :
+        n = 0
+        for piece in self.all_pieces :
+            for protection in piece.protection_moves() :
+                if (self.get_piece(protection[0], protection[1]) != " ") :
+                    n += 1
+        return n
