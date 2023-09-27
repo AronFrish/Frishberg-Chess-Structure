@@ -10,4 +10,4 @@ This program was created to randomly generate boards and optimize for the number
 
 The final result is a board with 38 "protections", averaging 2.2 "protections" per piece.
 
-I also rendered structures with 2 pieces, 3 pieces, ...
+I also rendered structures with 2 pieces, 3 pieces, ..., which are stored in the "results" folder.
